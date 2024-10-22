@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.spliterator.common.constants.MessageType.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @Service
 @RequiredArgsConstructor
@@ -61,7 +61,7 @@ public class UserService {
             userDao.insertUser(userDetails);
         } else {
             errors.add("User already exists.");
-            throw new BadRequestException(BAD_REQUEST, errors);
+            throw new BadRequestException(BAD_REQUEST.getReasonPhrase(), errors);
         }
     }
 }

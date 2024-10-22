@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spliterator.foods.dao.FoodDao">
+    <select id="fetchFoodsForGivenRestaurant" resultType="FoodDetails">
+        SELECT
+            id,
+            name,
+            rest_id AS restaurant_id,
+            price
+        FROM foods
+        WHERE
+            rest_id = #{restaurantId}
+    </select>
+
+    <insert id="enterNewFoodDetails">
+        INSERT INTO foods (name, rest_id, price)
+        VALUES (#{name}, #{restaurantId}, #{price})
+    </insert>
+
+    <select id="checkFoodNameAlreadyExistsForGivenRestaurant" resultType="java.lang.Boolean">
+        SELECT EXISTS (
+            SELECT 1 FROM foods
+            WHERE
+                name LIKE #{foodName} AND
+                rest_id = #{restaurantId}
+        )
+    </select>
+
+</mapper>

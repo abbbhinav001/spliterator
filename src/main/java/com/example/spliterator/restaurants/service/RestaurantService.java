@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.example.spliterator.common.constants.MessageType.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ public class RestaurantService {
      * @return List of type {@link RestaurantDetails}
      */
     public List<RestaurantDetails> getAllRestaurants() {
-        List<RestaurantDetailsModel> restaurantDetails = restaurantDao.fetchRestaurants(null);
+        List<RestaurantDetailsModel> restaurantDetails = restaurantDao.fetchRestaurantDetails(null);
         return restaurantMapper.mapToDto(restaurantDetails);
     }
 
@@ -36,7 +36,7 @@ public class RestaurantService {
      * @return Type {@link RestaurantDetails}
      */
     public List<RestaurantDetails> getRestaurantById(Integer id) {
-        List<RestaurantDetailsModel> restaurantDetails = restaurantDao.fetchRestaurants(id);
+        List<RestaurantDetailsModel> restaurantDetails = restaurantDao.fetchRestaurantDetails(id);
         return restaurantMapper.mapToDto(restaurantDetails);
     }
 
@@ -48,7 +48,7 @@ public class RestaurantService {
     public void createRestaurant(RestaurantDetailsModel restaurantDetails) {
         boolean checkRestaurantExists = restaurantDao.checkRestaurantExistsByName(restaurantDetails.getName());
         if (checkRestaurantExists) {
-            throw new BadRequestException(BAD_REQUEST, List.of("Restaurant name already exists"));
+            throw new BadRequestException(BAD_REQUEST.getReasonPhrase(), List.of("Restaurant name already exists"));
         }
         restaurantDao.createRestaurant(restaurantDetails);
 

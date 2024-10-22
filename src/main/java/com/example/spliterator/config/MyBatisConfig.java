@@ -13,7 +13,8 @@ import javax.sql.DataSource;
  * MyBatis Configuration for the application
  */
 @Configuration
-@MapperScan({"com.example.spliterator.users.dao", "com.example.spliterator.restaurants.dao"})
+@MapperScan({"com.example.spliterator.users.dao", "com.example.spliterator.restaurants.dao",
+    "com.example.spliterator.foods.dao"})
 public class MyBatisConfig {
 
     @Bean

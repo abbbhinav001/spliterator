@@ -16,6 +16,25 @@ import static com.example.spliterator.common.constants.MessageType.TYPE_FAILED;
 @Slf4j
 public class ApiExceptionHandler {
     /**
+     * This method processes the response for generic exceptions occurring in the application
+     *
+     * @param e Exception
+     * @return ResponseEntity
+     */
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiError> handleException(Exception e) {
+        log.info(String.valueOf(e.getCause()));
+        ApiError apiError = ApiError
+            .builder()
+            .code(HttpStatus.BAD_REQUEST.value())
+            .type(TYPE_FAILED)
+            .errors(List.of("Caused Exception: " + e.getClass()))
+            .build();
+
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+
+    /**
      * This method processes the Response for when BadRequestException is thrown
      *
      * @param e BadRequestException
@@ -29,25 +48,6 @@ public class ApiExceptionHandler {
             .code(HttpStatus.BAD_REQUEST.value())
             .type(TYPE_FAILED)
             .errors(e.getErrors())
-            .build();
-
-        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
-    }
-
-    /**
-     * This method processes the response for generic exceptions occurring in the application
-     *
-     * @param e Exception
-     * @return ResponseEntity
-     */
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiError> handleException(Exception e) {
-        log.info(String.valueOf(e.getCause()));
-        ApiError apiError = ApiError
-            .builder()
-            .code(HttpStatus.BAD_REQUEST.value())
-            .type(TYPE_FAILED)
-            .errors(List.of(e.getMessage()))
             .build();
 
         return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);

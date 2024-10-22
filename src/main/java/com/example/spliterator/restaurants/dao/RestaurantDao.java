@@ -13,7 +13,7 @@ public interface RestaurantDao {
      * @param id Restaurant ID
      * @return List of {@link RestaurantDetailsModel}
      */
-    List<RestaurantDetailsModel> fetchRestaurants(Integer id);
+    List<RestaurantDetailsModel> fetchRestaurantDetails(Integer id);
 
     /**
      * Check if any restaurant with given name is already registered in the application.
