@@ -10,7 +10,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan({"com.example.spliterator.users.dao"})
+@MapperScan({"com.example.spliterator.users.dao","com.example.spliterator.restaurants.dao"})
 public class MyBatisConfig {
 
     @Bean

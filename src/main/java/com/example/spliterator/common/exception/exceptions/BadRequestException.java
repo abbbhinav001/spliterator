@@ -1,4 +1,4 @@
-package com.example.spliterator.common.exceptions.exception;
+package com.example.spliterator.common.exception.exceptions;
 
 import java.util.List;
 

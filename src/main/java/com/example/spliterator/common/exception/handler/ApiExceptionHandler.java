@@ -1,6 +1,6 @@
-package com.example.spliterator.common.exceptions.handler;
+package com.example.spliterator.common.exception.handler;
 
-import com.example.spliterator.common.exceptions.exception.BadRequestException;
+import com.example.spliterator.common.exception.exceptions.BadRequestException;
 import com.example.spliterator.common.model.ApiError;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static com.example.spliterator.common.constants.MessageType.BAD_REQUEST;
 import static com.example.spliterator.common.constants.MessageType.TYPE_FAILED;
 
 @RestControllerAdvice

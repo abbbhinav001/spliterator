@@ -1,11 +1,12 @@
 package com.example.spliterator.users.controller;
 
 import com.example.spliterator.common.dtos.ResponseModel;
+import com.example.spliterator.users.dtos.CreateUserInputDto;
 import com.example.spliterator.users.dtos.UserResponseDto;
 import com.example.spliterator.users.dtos.UserDetailsDataDto;
 import com.example.spliterator.users.dtos.UserDetailsDto;
 import com.example.spliterator.users.mapstruct.UserMapper;
-import com.example.spliterator.common.service.UserService;
+import com.example.spliterator.users.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -58,7 +59,7 @@ public class UserController {
     }
 
     @PostMapping("create")
-    public ResponseEntity<ResponseModel> createUser(@RequestBody UserDetailsDto userDetails) {
+    public ResponseEntity<ResponseModel> createUser(@RequestBody CreateUserInputDto userDetails) {
         userService.createUser(userMapper.mapToModel(userDetails));
 
         ResponseModel response = ResponseModel

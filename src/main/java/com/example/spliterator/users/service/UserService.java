@@ -1,6 +1,6 @@
-package com.example.spliterator.common.service;
+package com.example.spliterator.users.service;
 
-import com.example.spliterator.common.exceptions.exception.BadRequestException;
+import com.example.spliterator.common.exception.exceptions.BadRequestException;
 import com.example.spliterator.users.dao.UserDao;
 import com.example.spliterator.users.dtos.UserDetailsDto;
 import com.example.spliterator.users.mapstruct.UserMapper;
