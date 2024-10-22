@@ -19,16 +19,32 @@ public class RestaurantService {
 
     private final RestaurantMapper restaurantMapper;
 
+    /**
+     * Service method to fetch all the restaurants.
+     *
+     * @return List of type {@link RestaurantDetails}
+     */
     public List<RestaurantDetails> getAllRestaurants() {
         List<RestaurantDetailsModel> restaurantDetails = restaurantDao.fetchRestaurants(null);
         return restaurantMapper.mapToDto(restaurantDetails);
     }
 
+    /**
+     * Service method to fetch restaurant details using ID.
+     *
+     * @param id ID of the restaurant to be fetched
+     * @return Type {@link RestaurantDetails}
+     */
     public List<RestaurantDetails> getRestaurantById(Integer id) {
         List<RestaurantDetailsModel> restaurantDetails = restaurantDao.fetchRestaurants(id);
         return restaurantMapper.mapToDto(restaurantDetails);
     }
 
+    /**
+     * Service method to register a new restaurant into the application
+     *
+     * @param restaurantDetails Details of the new restaurant to be registered.
+     */
     public void createRestaurant(RestaurantDetailsModel restaurantDetails) {
         boolean checkRestaurantExists = restaurantDao.checkRestaurantExistsByName(restaurantDetails.getName());
         if (checkRestaurantExists) {

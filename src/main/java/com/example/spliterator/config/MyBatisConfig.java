@@ -9,8 +9,11 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
+/**
+ * MyBatis Configuration for the application
+ */
 @Configuration
-@MapperScan({"com.example.spliterator.users.dao","com.example.spliterator.restaurants.dao"})
+@MapperScan({"com.example.spliterator.users.dao", "com.example.spliterator.restaurants.dao"})
 public class MyBatisConfig {
 
     @Bean
@@ -26,6 +29,7 @@ public class MyBatisConfig {
         // Configuration for setting Alias packages
         factoryBean.setTypeAliasesPackage("com.example.spliterator.*.models");
 
+        // Setting the location for the xml files for DAO layer
         factoryBean.setMapperLocations(
             new PathMatchingResourcePatternResolver().getResources("classpath:mappers/*.xml"));
 
